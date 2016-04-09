@@ -64,7 +64,7 @@ public class GraphicsService {
 	 * 
 	 * @return {@link Vector2i} object with x as Width and Y as Height
 	 */
-	public Vector2i getScreen() {
+	public Vector2i getScreenSize() {
 		Vector2i v = new Vector2i(0, 0);
 		v.setX((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth());
 		v.setY((int) Toolkit.getDefaultToolkit().getScreenSize().getHeight());
@@ -78,7 +78,7 @@ public class GraphicsService {
 	 * 
 	 * @return {@link Vector2i} object with x as Width and Y as Height
 	 */
-	public Vector2i getHalfScreen() {
+	public Vector2i getHalfScreenSize() {
 		Vector2i v = new Vector2i(0, 0);
 		v.setX((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 2);
 		v.setY((int) Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 2);
