@@ -7,24 +7,25 @@ import java.io.Serializable;
  * 
  * @author Andrea Bori
  */
-public class Vector3b implements Serializable {
+public class Vector3b implements Serializable
+{
 
 	/**
 	 * serialVersionUID used for serialize
 	 */
-	private static final long serialVersionUID = -4415199675754249202L;
+	private static final long	serialVersionUID	= -4415199675754249202L;
 	/**
 	 * The x Value
 	 */
-	private byte x;
+	private byte				x;
 	/**
 	 * The y Value
 	 */
-	private byte y;
+	private byte				y;
 	/**
 	 * The z Value
 	 */
-	private byte z;
+	private byte				z;
 
 	/**
 	 * Constructor of the class, need to specify 3 variable: x, y and z
@@ -36,7 +37,8 @@ public class Vector3b implements Serializable {
 	 * @param z
 	 *            variable z
 	 */
-	public Vector3b(byte x, byte y, byte z) {
+	public Vector3b(byte x, byte y, byte z)
+	{
 		setX(x);
 		setY(y);
 		setZ(z);

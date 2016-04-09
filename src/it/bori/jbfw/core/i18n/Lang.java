@@ -2,7 +2,6 @@ package it.bori.jbfw.core.i18n;
 
 import it.bori.jbfw.core.exception.LangNotFoundException;
 import it.bori.jbfw.core.exception.WordNotFoundException;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -16,30 +15,31 @@ import java.util.Properties;
  * @author Andrea Bori
  *
  */
-public class Lang implements Serializable {
+public class Lang implements Serializable
+{
 
 	/**
 	 * serialVersionUID used for serialization
 	 */
-	private static final long serialVersionUID = -4161483547578444712L;
+	private static final long	serialVersionUID	= -4161483547578444712L;
 
 	/**
 	 * Languages name, can be "it" or "it-IT" for example
 	 */
-	private String lang;
+	private String				lang;
 
 	/**
 	 * languages resource where file it's stored ( do not include extension, and
 	 * extension must be "i18n" else it will throw {@link LangNotFoundException}
 	 * )
 	 */
-	private String langSource;
+	private String				langSource;
 
 	/**
 	 * {@link Properties} object containing all the key with respective
 	 * languages value
 	 */
-	private Properties langList;
+	private Properties			langList;
 
 	/**
 	 * Default constructor of the class, require the languages name and it's
@@ -57,7 +57,8 @@ public class Lang implements Serializable {
 	 *             in case parsing is interrupted or something whent wrong
 	 */
 	public Lang(String lang, String source) throws LangNotFoundException,
-			IOException {
+			IOException
+	{
 		this.lang = lang;
 		this.langSource = source + "lang.i18n";
 		if (!new File(this.langSource).exists())
@@ -80,9 +81,11 @@ public class Lang implements Serializable {
 	 */
 	public String getWord(String word) throws WordNotFoundException {
 		String w = this.langList.getProperty(word);
-		if (w == null) {
+		if (w == null)
+		{
 			throw new WordNotFoundException(this.lang, w);
-		} else
+		}
+		else
 			return w;
 	}
 

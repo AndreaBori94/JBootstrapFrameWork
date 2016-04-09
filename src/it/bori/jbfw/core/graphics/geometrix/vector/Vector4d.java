@@ -7,28 +7,29 @@ import java.io.Serializable;
  * 
  * @author Andrea Bori
  */
-public class Vector4d implements Serializable {
+public class Vector4d implements Serializable
+{
 
 	/**
 	 * serialVersionUID used for serialize
 	 */
-	private static final long serialVersionUID = 1453239367055696345L;
+	private static final long	serialVersionUID	= 1453239367055696345L;
 	/**
 	 * The x Value
 	 */
-	private double x;
+	private double				x;
 	/**
 	 * The y Value
 	 */
-	private double y;
+	private double				y;
 	/**
 	 * The z Value
 	 */
-	private double z;
+	private double				z;
 	/**
 	 * The a Value
 	 */
-	private double a;
+	private double				a;
 
 	/**
 	 * Constructor of the class, need to specify 3 variable: x, y and z
@@ -42,7 +43,8 @@ public class Vector4d implements Serializable {
 	 * @param a
 	 *            variable a
 	 */
-	public Vector4d(double x, double y, double z, double a) {
+	public Vector4d(double x, double y, double z, double a)
+	{
 		setX(x);
 		setY(y);
 		setZ(z);

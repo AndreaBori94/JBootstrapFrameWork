@@ -3,7 +3,6 @@ package it.bori.jbfw.core.webrepo;
 import it.bori.jbfw.core.debug.logger.Logger;
 import it.bori.jbfw.core.exception.RemoteWebRepositoryAuthenticationException;
 import it.bori.jbfw.core.exception.RemoteWebRepositoryParsingException;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -26,42 +25,43 @@ import java.util.regex.Pattern;
  * @author Andrea Bori
  *
  */
-public class RemoteWebRepository implements Serializable {
+public class RemoteWebRepository implements Serializable
+{
 
 	/**
 	 * serialVersionUID used for serialization
 	 */
-	private static final long serialVersionUID = -4931157742995109909L;
+	private static final long	serialVersionUID	= -4931157742995109909L;
 
 	/**
 	 * URL object composed by protocol+host+port+workspace
 	 */
-	private URL url;
+	private URL					url;
 
 	/**
 	 * Remote Machine communicating port by default it's "4502"
 	 */
-	private int port;
+	private int					port;
 
 	/**
 	 * Remote Machine Host Name by default it's "localhost"
 	 */
-	private String host;
+	private String				host;
 
 	/**
 	 * Remote Machine Workspace by default it's "crx/server/crx.default"
 	 */
-	private String workspace;
+	private String				workspace;
 
 	/**
 	 * Navigation path, by default it's "/" it's can't go more backward than "/"
 	 */
-	private String navPath;
+	private String				navPath;
 
 	/**
 	 * Condition if it's used secured connection with HTTPS or simply HTTP
 	 */
-	private boolean ssl;
+	private boolean				ssl;
 
 	/**
 	 * Default constructor, connect to a remove Java Content Repository, if
@@ -86,7 +86,8 @@ public class RemoteWebRepository implements Serializable {
 	 */
 	public RemoteWebRepository(String host, int port, String workspace,
 			String user, String pass, boolean ssl)
-			throws RemoteWebRepositoryAuthenticationException {
+			throws RemoteWebRepositoryAuthenticationException
+	{
 		Logger.log("Enstablish connection to JCR");
 		Logger.log("Setting default Authenticator");
 		setSSL(ssl);
@@ -118,7 +119,8 @@ public class RemoteWebRepository implements Serializable {
 	 */
 	public RemoteWebRepository(String host, int port, String workspace,
 			String user, String pass)
-			throws RemoteWebRepositoryAuthenticationException {
+			throws RemoteWebRepositoryAuthenticationException
+	{
 		Logger.log("Enstablish connection to JCR");
 		Logger.log("Setting default Authenticator");
 		setSSL(false);
@@ -147,7 +149,8 @@ public class RemoteWebRepository implements Serializable {
 	 *             called when user name and/or password are not valid
 	 */
 	public RemoteWebRepository(String host, String workspace, String user,
-			String pass) throws RemoteWebRepositoryAuthenticationException {
+			String pass) throws RemoteWebRepositoryAuthenticationException
+	{
 		Logger.log("Enstablish connection to JCR");
 		Logger.log("Setting default Authenticator");
 		setSSL(false);
@@ -167,10 +170,13 @@ public class RemoteWebRepository implements Serializable {
 	 *            it's 4502
 	 */
 	private void setPort(int port) {
-		if (port >= 49152 && port <= 65535) {
+		if (port >= 49152 && port <= 65535)
+		{
 			this.port = port;
 			Logger.log("Setting port " + this.port);
-		} else {
+		}
+		else
+		{
 			Logger.log(Logger.LEVEL_WARNING, "Trying to set port " + port
 					+ " fail, set default 4502", false);
 			this.port = 4502;
@@ -193,7 +199,8 @@ public class RemoteWebRepository implements Serializable {
 	 *            condition if use HTTPS or HTTP
 	 */
 	public void setSSL(boolean ssl) {
-		if (ssl) {
+		if (ssl)
+		{
 			Logger.log("Setting secured connection");
 		}
 		this.ssl = ssl;
@@ -210,12 +217,15 @@ public class RemoteWebRepository implements Serializable {
 	 *            the new HOST
 	 */
 	public void setHost(String host) {
-		if (host.length() > 0) {
+		if (host.length() > 0)
+		{
 			this.host = host;
 			Logger.log(Logger.LEVEL_WARNING,
 					"No host specified, setting \"localhost\" as default",
 					false);
-		} else {
+		}
+		else
+		{
 			this.host = "localhost";
 			Logger.log("Setting " + host + " as HOST");
 		}
@@ -237,10 +247,13 @@ public class RemoteWebRepository implements Serializable {
 	 *            the new workspace where redirect the URL pointer
 	 */
 	public void setWorkspace(String workspace) {
-		if (workspace.length() > 0) {
+		if (workspace.length() > 0)
+		{
 			Logger.log("Setting workspace as " + workspace);
 			this.workspace = workspace;
-		} else {
+		}
+		else
+		{
 			Logger.log(
 					Logger.LEVEL_WARNING,
 					"No workspace specified, setting \"crx.default\" as default",
@@ -265,16 +278,23 @@ public class RemoteWebRepository implements Serializable {
 	 *            the new path to point the pointer
 	 */
 	public void setPath(String path) {
-		if (path.length() > 0) {
-			if ("".equals(path)) {
+		if (path.length() > 0)
+		{
+			if ("".equals(path))
+			{
 				this.navPath = "/";
-			} else {
-				if (!navPath.startsWith("/")) {
+			}
+			else
+			{
+				if (!navPath.startsWith("/"))
+				{
 					this.navPath = "/" + path;
-				} else
+				}
+				else
 					this.navPath = path;
 			}
-		} else
+		}
+		else
 			this.navPath = "/";
 		Logger.log("Switch to " + path);
 	}
@@ -294,9 +314,12 @@ public class RemoteWebRepository implements Serializable {
 	 * @return URL object with fullQualifiedPath
 	 */
 	public URL getUrl() {
-		try {
+		try
+		{
 			this.url = new URL(getFullQualifiedPath());
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			e.printStackTrace();
 			Logger.log(e);
 		}
@@ -310,7 +333,8 @@ public class RemoteWebRepository implements Serializable {
 	 */
 	public String getFullQualifiedPath() {
 		String fqp = "http://";
-		if (isSSL()) {
+		if (isSSL())
+		{
 			fqp = "https://";
 		}
 		fqp += getHost() + ":" + getPort() + "/crx/repository/"
@@ -334,18 +358,22 @@ public class RemoteWebRepository implements Serializable {
 	 */
 	private void setAuthenticator(String usr, String pwd)
 			throws RemoteWebRepositoryAuthenticationException {
-		if (usr != null && pwd != null) {
-			if (!"".equals(usr) && !"".equals(pwd)) {
+		if (usr != null && pwd != null)
+		{
+			if (!"".equals(usr) && !"".equals(pwd))
+			{
 				Authenticator.setDefault(new Authenticator() {
-					@Override
-					protected PasswordAuthentication getPasswordAuthentication() {
+
+					@Override protected PasswordAuthentication getPasswordAuthentication() {
 						return new PasswordAuthentication(usr, pwd
 								.toCharArray());
 					}
 				});
-			} else
+			}
+			else
 				throw new RemoteWebRepositoryAuthenticationException();
-		} else
+		}
+		else
 			throw new RemoteWebRepositoryAuthenticationException();
 	}
 
@@ -360,15 +388,20 @@ public class RemoteWebRepository implements Serializable {
 	public String[] getList() throws RemoteWebRepositoryParsingException {
 		List<String> tagValues = new ArrayList<String>();
 		boolean error = false;
-		try {
+		try
+		{
 			Pattern TAG_REGEX = Pattern.compile("<a href=\"(.+?)\"");
 			Matcher matcher = TAG_REGEX.matcher(getFullQualifiedPath());
-			while (matcher.find()) {
-				if (matcher.group(1).contains(getHost() + ":" + getPort())) {
+			while (matcher.find())
+			{
+				if (matcher.group(1).contains(getHost() + ":" + getPort()))
+				{
 					tagValues.add(matcher.group(1));
 				}
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			error = true;
 		}
 		if (error)
@@ -383,20 +416,27 @@ public class RemoteWebRepository implements Serializable {
 	 * @return boolean true if success else false
 	 */
 	public boolean fetchFile() {
-		try {
-			if (isFile(getFullQualifiedPath())) {
-				if (buildLocalPath(getPath())) {
+		try
+		{
+			if (isFile(getFullQualifiedPath()))
+			{
+				if (buildLocalPath(getPath()))
+				{
 					String content = getContent();
 					BufferedWriter out = new BufferedWriter(new FileWriter(
 							getPath()));
 					out.write(content);
 					out.close();
 
-				} else
+				}
+				else
 					return false;
-			} else
+			}
+			else
 				return false;
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			e.printStackTrace();
 			Logger.log(e);
 		}
@@ -411,26 +451,39 @@ public class RemoteWebRepository implements Serializable {
 	 * @return boolean condition if success
 	 */
 	public boolean buildLocalPath(String path) {
-		try {
-			if (path.length() > 0) {
+		try
+		{
+			if (path.length() > 0)
+			{
 				String[] allPath = path.split("/");
 				String compiledPath = "";
-				for (int i = 0; i < allPath.length; i++) {
+				for (int i = 0; i < allPath.length; i++)
+				{
 					compiledPath += allPath[i];
-					if (isFile(compiledPath)) {
+					if (isFile(compiledPath))
+					{
 						new File(compiledPath).createNewFile();
-					} else {
+					}
+					else
+					{
 						new File(compiledPath).mkdir();
 					}
 				}
-			} else {
-				if (isFile(path)) {
+			}
+			else
+			{
+				if (isFile(path))
+				{
 					new File(path).createNewFile();
-				} else {
+				}
+				else
+				{
 					new File(path).mkdir();
 				}
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			e.printStackTrace();
 			Logger.log(e);
 			return false;
@@ -449,7 +502,8 @@ public class RemoteWebRepository implements Serializable {
 	public String getContent() throws RemoteWebRepositoryParsingException {
 		String content = "";
 		boolean error = false;
-		try {
+		try
+		{
 			BufferedReader in = new BufferedReader(new InputStreamReader(
 					getUrl().openStream()));
 			String inputLine;
@@ -457,7 +511,9 @@ public class RemoteWebRepository implements Serializable {
 				content += inputLine;
 			in.close();
 
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			error = true;
 			return null;
 		}
@@ -478,10 +534,13 @@ public class RemoteWebRepository implements Serializable {
 	 */
 	public boolean isFile(String path) {
 		String[] splitted = path.split("/");
-		if (path.length() > 0) {
+		if (path.length() > 0)
+		{
 			String last = splitted[splitted.length];
 			return last.lastIndexOf('.') > -1;
-		} else {
+		}
+		else
+		{
 			return path.lastIndexOf('.') > -1;
 		}
 	}

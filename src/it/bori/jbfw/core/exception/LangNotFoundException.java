@@ -9,12 +9,14 @@ import java.io.Serializable;
  * @author Andrea Bori
  *
  */
-public class LangNotFoundException extends JBFWException implements Serializable {
+public class LangNotFoundException extends JBFWException implements
+		Serializable
+{
 
 	/**
 	 * serialVersionUID used for serialize
 	 */
-	private static final long serialVersionUID = -8269787313087680143L;
+	private static final long	serialVersionUID	= -8269787313087680143L;
 
 	/**
 	 * Default constructor, need the lang name for specify what languages cannot
@@ -23,7 +25,8 @@ public class LangNotFoundException extends JBFWException implements Serializable
 	 * @param languages
 	 *            languages name
 	 */
-	public LangNotFoundException(String languages) {
+	public LangNotFoundException(String languages)
+	{
 		super("Cannot find lang [" + languages + "]");
 	}
 }

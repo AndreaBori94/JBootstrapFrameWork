@@ -13,16 +13,17 @@ import java.net.URL;
  * @author Andrea Bori
  *
  */
-public class URLDownloader implements Serializable {
+public class URLDownloader implements Serializable
+{
 
 	/**
 	 * serialVersionUID used for serialization
 	 */
-	private static final long serialVersionUID = -4849326908155987039L;
+	private static final long	serialVersionUID	= -4849326908155987039L;
 	/**
 	 * URL target where point the stream
 	 */
-	private URL target;
+	private URL					target;
 
 	/**
 	 * Default constructor, accept a string as URL
@@ -32,7 +33,8 @@ public class URLDownloader implements Serializable {
 	 * @throws MalformedURLException
 	 *             if the URL it's not properly composed
 	 */
-	public URLDownloader(String target) throws MalformedURLException {
+	public URLDownloader(String target) throws MalformedURLException
+	{
 		this.target = new URL(target);
 	}
 

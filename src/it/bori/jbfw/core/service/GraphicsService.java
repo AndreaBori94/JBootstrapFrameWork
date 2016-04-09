@@ -2,11 +2,9 @@ package it.bori.jbfw.core.service;
 
 import java.awt.Toolkit;
 import java.io.Serializable;
-
 import it.bori.jbfw.core.debug.logger.Logger;
 import it.bori.jbfw.core.graphics.geometrix.vector.Vector2d;
 import it.bori.jbfw.core.graphics.geometrix.vector.Vector2i;
-
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -17,12 +15,13 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author Andrea Bori
  *
  */
-public class GraphicsService implements Serializable {
+public class GraphicsService implements Serializable
+{
 
 	/**
 	 * serialVersionUID used for serialization
 	 */
-	private static final long serialVersionUID = 9027018276502308258L;
+	private static final long	serialVersionUID	= 9027018276502308258L;
 
 	/**
 	 * Set look and feel by a given LeF, this method auto manage logging for
@@ -34,31 +33,45 @@ public class GraphicsService implements Serializable {
 	public static void setLookAndFeel(String lnfName) {
 		String error = "";
 		Exception ex = null;
-		try {
-			for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-				if (lnfName.equals(info.getName())) {
+		try
+		{
+			for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels())
+			{
+				if (lnfName.equals(info.getName()))
+				{
 					UIManager.setLookAndFeel(info.getClassName());
 					break;
 				}
 			}
-		} catch (InstantiationException e) {
+		}
+		catch (InstantiationException e)
+		{
 			ex = e;
 			error = "InstantiationException when setting L&F [" + lnfName + "]";
-		} catch (IllegalAccessException e) {
+		}
+		catch (IllegalAccessException e)
+		{
 			ex = e;
 			error = "IllegalAccessException when setting L&F [" + lnfName + "]";
-		} catch (UnsupportedLookAndFeelException e) {
+		}
+		catch (UnsupportedLookAndFeelException e)
+		{
 			ex = e;
 			error = "UnsupportedLookAndFeelException when setting L&F ["
 					+ lnfName + "]";
-		} catch (ClassNotFoundException e) {
+		}
+		catch (ClassNotFoundException e)
+		{
 			ex = e;
 			error = "ClassNotFoundException when setting L&F [" + lnfName + "]";
 		}
-		if (ex == null && "".equals(error)) {
+		if (ex == null && "".equals(error))
+		{
 			Logger.log(ex);
 			Logger.log(Logger.LEVEL_WARNING, error, false);
-		} else {
+		}
+		else
+		{
 			Logger.log(Logger.LEVEL_INFO,
 					"Success apply L&F [" + lnfName + "]", false);
 		}

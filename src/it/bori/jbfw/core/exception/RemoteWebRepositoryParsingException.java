@@ -9,12 +9,14 @@ import java.io.Serializable;
  * @author Andrea Bori
  *
  */
-public class RemoteWebRepositoryParsingException extends JBFWException implements Serializable {
+public class RemoteWebRepositoryParsingException extends JBFWException
+		implements Serializable
+{
 
 	/**
 	 * serialVersionUID used for serialization
 	 */
-	private static final long serialVersionUID = -5419932759726469744L;
+	private static final long	serialVersionUID	= -5419932759726469744L;
 
 	/**
 	 * Default constructor, called when an error occurred while parsing and
@@ -23,7 +25,8 @@ public class RemoteWebRepositoryParsingException extends JBFWException implement
 	 * @param currentPath
 	 *            the current path where it encounter an error
 	 */
-	public RemoteWebRepositoryParsingException(String currentPath) {
+	public RemoteWebRepositoryParsingException(String currentPath)
+	{
 		super("Error while parsing ( listing ) " + currentPath);
 		// TODO Auto-generated constructor stub
 	}

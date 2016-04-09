@@ -7,20 +7,21 @@ import java.io.Serializable;
  * 
  * @author Andrea Bori
  */
-public class Vector2s implements Serializable {
+public class Vector2s implements Serializable
+{
 
 	/**
 	 * SerialVersioUID
 	 */
-	private static final long serialVersionUID = 1698004861456305734L;
+	private static final long	serialVersionUID	= 1698004861456305734L;
 	/**
 	 * The x Value
 	 */
-	private String x;
+	private String				x;
 	/**
 	 * The y Value
 	 */
-	private String y;
+	private String				y;
 
 	/**
 	 * Constructor of the class, need to specify 2 variable: x and y
@@ -30,7 +31,8 @@ public class Vector2s implements Serializable {
 	 * @param y
 	 *            variable y
 	 */
-	public Vector2s(String x, String y) {
+	public Vector2s(String x, String y)
+	{
 		setX(x);
 		setY(y);
 	}

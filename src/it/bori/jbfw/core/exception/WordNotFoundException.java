@@ -8,12 +8,14 @@ import java.io.Serializable;
  * @author Andrea Bori
  *
  */
-public class WordNotFoundException extends JBFWException implements Serializable {
+public class WordNotFoundException extends JBFWException implements
+		Serializable
+{
 
 	/**
 	 * serialVersionUID for serialization
 	 */
-	private static final long serialVersionUID = -7507929888508336923L;
+	private static final long	serialVersionUID	= -7507929888508336923L;
 
 	/**
 	 * Default constructor, called when a word inside a languages it's not found
@@ -23,7 +25,8 @@ public class WordNotFoundException extends JBFWException implements Serializable
 	 * @param word
 	 *            the word that hasn't been found
 	 */
-	public WordNotFoundException(String lang, String word) {
+	public WordNotFoundException(String lang, String word)
+	{
 		super("Word [" + word + "] not found exception in [" + lang + "]");
 	}
 

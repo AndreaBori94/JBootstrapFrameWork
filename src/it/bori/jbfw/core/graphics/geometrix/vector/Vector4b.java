@@ -7,28 +7,29 @@ import java.io.Serializable;
  * 
  * @author Andrea Bori
  */
-public class Vector4b implements Serializable {
+public class Vector4b implements Serializable
+{
 
 	/**
 	 * serialVersionUID used for serialize
 	 */
-	private static final long serialVersionUID = -2234492181240952472L;
+	private static final long	serialVersionUID	= -2234492181240952472L;
 	/**
 	 * The x Value
 	 */
-	private byte x;
+	private byte				x;
 	/**
 	 * The y Value
 	 */
-	private byte y;
+	private byte				y;
 	/**
 	 * The z Value
 	 */
-	private byte z;
+	private byte				z;
 	/**
 	 * The a Value
 	 */
-	private byte a;
+	private byte				a;
 
 	/**
 	 * Constructor of the class, need to specify 3 variable: x, y and z
@@ -42,7 +43,8 @@ public class Vector4b implements Serializable {
 	 * @param a
 	 *            variable a
 	 */
-	public Vector4b(byte x, byte y, byte z, byte a) {
+	public Vector4b(byte x, byte y, byte z, byte a)
+	{
 		setX(x);
 		setY(y);
 		setZ(z);

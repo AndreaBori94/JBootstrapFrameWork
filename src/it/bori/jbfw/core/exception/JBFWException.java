@@ -1,7 +1,6 @@
 package it.bori.jbfw.core.exception;
 
 import java.io.Serializable;
-
 import it.bori.jbfw.core.debug.logger.Logger;
 
 /**
@@ -10,12 +9,13 @@ import it.bori.jbfw.core.debug.logger.Logger;
  * @author Andrea Bori
  *
  */
-public class JBFWException extends Exception implements Serializable {
+public class JBFWException extends Exception implements Serializable
+{
 
 	/**
 	 * serialVersionUID used for serializing
 	 */
-	private static final long serialVersionUID = 26832995012219205L;
+	private static final long	serialVersionUID	= 26832995012219205L;
 
 	/**
 	 * Default constructor, simply pass to logger instance this class
@@ -23,7 +23,8 @@ public class JBFWException extends Exception implements Serializable {
 	 * @param msg
 	 *            the message to be displayed and logged
 	 */
-	public JBFWException(String msg) {
+	public JBFWException(String msg)
+	{
 		super(msg);
 		Logger.log(this);
 	}

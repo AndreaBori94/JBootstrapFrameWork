@@ -8,7 +8,6 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import javax.swing.JOptionPane;
 
 /**
@@ -17,44 +16,46 @@ import javax.swing.JOptionPane;
  * @author Andrea Bori
  *
  */
-public class Logger implements Serializable {
+public class Logger implements Serializable
+{
+
 	/**
 	 * serialVersionUID used for serialization
 	 */
-	private static final long serialVersionUID = -1483778188649924151L;
-	
+	private static final long		serialVersionUID	= -1483778188649924151L;
+
 	/**
 	 * Use this, to "define" a simply info to userAdmin
 	 */
-	public static final int LEVEL_INFO = 0;
+	public static final int			LEVEL_INFO			= 0;
 	/**
 	 * Use this, to "define" a potential error, or simply a warning
 	 */
-	public static final int LEVEL_WARNING = 1;
+	public static final int			LEVEL_WARNING		= 1;
 	/**
 	 * Use this, to "define" an error
 	 */
-	public static final int LEVEL_ERROR = 2;
+	public static final int			LEVEL_ERROR			= 2;
 
 	/**
 	 * Used inside Logger to check if application has call init method or not
 	 */
-	private static boolean initialized = false;
+	private static boolean			initialized			= false;
 
 	/**
 	 * Contains how many times the specified LogLevel has been called, when
 	 * application "die", it's print all this information
 	 */
-	private static int[] LEVEL_CALLED = { 0, 0, 0, 0 };
+	private static int[]			LEVEL_CALLED		= { 0, 0, 0, 0 };
 
 	/**
 	 * Object containing the output pointer
 	 */
-	private static File source;
+	private static File				source;
 	/**
 	 * Object used to write log inside the source
 	 */
-	private static BufferedWriter writer;
+	private static BufferedWriter	writer;
 
 	/**
 	 * Initialize the Logger class, with append condition
@@ -65,28 +66,36 @@ public class Logger implements Serializable {
 	 */
 	public static void init(boolean append) {
 		int fileID = 0;
-		if (!append) {
-			while (true) {
-				if (new File("output_err_" + fileID + ".log").exists()) {
+		if (!append)
+		{
+			while (true)
+			{
+				if (new File("output_err_" + fileID + ".log").exists())
+				{
 					fileID++;
-				} else {
+				}
+				else
+				{
 					break;
 				}
 			}
 		}
 		Logger.source = new File("output_err_" + fileID + ".log");
-		try {
+		try
+		{
 			Logger.writer = new BufferedWriter(new FileWriter(Logger.source,
 					true));
-		} catch (IOException e) {
+		}
+		catch (IOException e)
+		{
 			Logger.showMessage("Console", "Logger Class Failure.",
 					Logger.LEVEL_ERROR);
 			e.printStackTrace();
 			System.exit(1);
 		}
 		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-			@Override
-			public void run() {
+
+			@Override public void run() {
 				Logger.log(Logger.LEVEL_INFO, "INF: " + LEVEL_CALLED[0], false);
 				Logger.log(Logger.LEVEL_INFO, "WAR: " + LEVEL_CALLED[1], false);
 				Logger.log(Logger.LEVEL_INFO, "ERR: " + LEVEL_CALLED[2], false);
@@ -114,11 +123,16 @@ public class Logger implements Serializable {
 	 */
 	public static void showMessage(String title, String content, int Level) {
 		int status = JOptionPane.INFORMATION_MESSAGE;
-		if (Level == Logger.LEVEL_ERROR) {
+		if (Level == Logger.LEVEL_ERROR)
+		{
 			status = JOptionPane.ERROR_MESSAGE;
-		} else if (Level == Logger.LEVEL_INFO) {
+		}
+		else if (Level == Logger.LEVEL_INFO)
+		{
 			status = JOptionPane.INFORMATION_MESSAGE;
-		} else if (Level == Logger.LEVEL_WARNING) {
+		}
+		else if (Level == Logger.LEVEL_WARNING)
+		{
 			status = JOptionPane.WARNING_MESSAGE;
 		}
 		JOptionPane.showMessageDialog(null, content, title, status);
@@ -136,43 +150,49 @@ public class Logger implements Serializable {
 	 *            boolean, if report to user
 	 */
 	public static void log(int status, String message, boolean report) {
-		if (!Logger.initialized) {
-			return;
-		}
+		if (!Logger.initialized) { return; }
 
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 		String composedMessage = dateFormat.format(date) + " ";
-		try {
+		try
+		{
 			switch (status) {
-			case 0: {
-				composedMessage += "*INF*";
-				Logger.LEVEL_CALLED[status]++;
-				break;
-			}
-			case 1: {
-				composedMessage += "*WAR*";
-				Logger.LEVEL_CALLED[status]++;
-				break;
-			}
-			case 2: {
-				composedMessage += "*ERR*";
-				Logger.LEVEL_CALLED[status]++;
-				break;
-			}
-			default: {
-				composedMessage += "*UND*";
-				Logger.LEVEL_CALLED[4]++;
-			}
+				case 0:
+				{
+					composedMessage += "*INF*";
+					Logger.LEVEL_CALLED[status]++;
+					break;
+				}
+				case 1:
+				{
+					composedMessage += "*WAR*";
+					Logger.LEVEL_CALLED[status]++;
+					break;
+				}
+				case 2:
+				{
+					composedMessage += "*ERR*";
+					Logger.LEVEL_CALLED[status]++;
+					break;
+				}
+				default:
+				{
+					composedMessage += "*UND*";
+					Logger.LEVEL_CALLED[4]++;
+				}
 			}
 			composedMessage += " " + message;
 			Logger.writer.write(composedMessage);
 			Logger.writer.newLine();
 			Logger.writer.flush();
-			if (report) {
+			if (report)
+			{
 				showMessage("Console Logger Report:", message, status);
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			Logger.showMessage("Console", "Logger Class Failure.",
 					Logger.LEVEL_ERROR);
 			e.printStackTrace();

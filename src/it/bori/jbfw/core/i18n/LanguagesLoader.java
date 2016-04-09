@@ -3,7 +3,6 @@ package it.bori.jbfw.core.i18n;
 import it.bori.jbfw.core.exception.LangNotFoundException;
 import it.bori.jbfw.core.exception.UnmatchedLanguagesException;
 import it.bori.jbfw.core.exception.WordNotFoundException;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -17,17 +16,18 @@ import java.util.List;
  * @author Andrea Bori
  *
  */
-public class LanguagesLoader implements Serializable {
+public class LanguagesLoader implements Serializable
+{
 
 	/**
 	 * serialVersionUID used for serialization
 	 */
-	private static final long serialVersionUID = 7864860455197728155L;
-	
+	private static final long	serialVersionUID	= 7864860455197728155L;
+
 	/**
 	 * Contains a list of languages available
 	 */
-	private static List<Lang> langs = new ArrayList<Lang>();
+	private static List<Lang>	langs				= new ArrayList<Lang>();
 
 	/**
 	 * Load a list of languages from a langFile
@@ -46,10 +46,12 @@ public class LanguagesLoader implements Serializable {
 		List<Lang> langs = new ArrayList<Lang>();
 		String line = "";
 
-		while ((line = reader.readLine()) != null) {
+		while ((line = reader.readLine()) != null)
+		{
 			String langPath;
 			String langName;
-			if (line.contains("[langName]")) {
+			if (line.contains("[langName]"))
+			{
 				line = line.replace("[langName]", "").trim();
 				langPath = line;
 				langName = langPath.split("/")[0];
@@ -72,31 +74,43 @@ public class LanguagesLoader implements Serializable {
 		Lang[] allLang = langs.toArray(new Lang[0]);
 		int size = -1;
 		List<String> failList = new ArrayList<String>();
-		for (int i = 0; i < allLang.length; i++) {
-			try {
+		for (int i = 0; i < allLang.length; i++)
+		{
+			try
+			{
 				String current = allLang[i].getPath() + ".i18n";
 				BufferedReader br = new BufferedReader(new FileReader(current));
 				int currentSize = 0;
 				String line = "";
-				while ((line = br.readLine()) != null) {
-					if (!line.isEmpty()) {
+				while ((line = br.readLine()) != null)
+				{
+					if (!line.isEmpty())
+					{
 						currentSize++;
 					}
 				}
 				br.close();
-				if (size == -1) {
+				if (size == -1)
+				{
 					size = currentSize;
-				} else {
-					if (currentSize != size) {
+				}
+				else
+				{
+					if (currentSize != size)
+					{
 						failList.add(allLang[i].getName());
 					}
 				}
-			} catch (Exception e) {
+			}
+			catch (Exception e)
+			{
 				e.printStackTrace();
 			}
-			if (failList.size() != 0) {
+			if (failList.size() != 0)
+			{
 				String allFail = "";
-				for (int j = 0; j < failList.size(); j++) {
+				for (int j = 0; j < failList.size(); j++)
+				{
 					allFail += failList.get(i) + " ";
 				}
 				throw new UnmatchedLanguagesException(allFail.trim());
@@ -116,14 +130,18 @@ public class LanguagesLoader implements Serializable {
 	 */
 	public static Lang getLang(String langName) throws LangNotFoundException {
 		int point = -1;
-		for (int i = 0; i < LanguagesLoader.langs.size(); i++) {
-			if (langName.equals(LanguagesLoader.langs.get(i))) {
+		for (int i = 0; i < LanguagesLoader.langs.size(); i++)
+		{
+			if (langName.equals(LanguagesLoader.langs.get(i)))
+			{
 				point = i;
 			}
 		}
-		if (point > -1) {
+		if (point > -1)
+		{
 			return LanguagesLoader.langs.get(point);
-		} else
+		}
+		else
 			throw new LangNotFoundException(langName);
 	}
 
