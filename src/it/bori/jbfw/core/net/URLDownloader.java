@@ -19,11 +19,11 @@ public class URLDownloader implements Serializable
 	/**
 	 * serialVersionUID used for serialization
 	 */
-	private static final long	serialVersionUID	= -4849326908155987039L;
+	private static final long serialVersionUID = -4849326908155987039L;
 	/**
 	 * URL target where point the stream
 	 */
-	private URL					target;
+	private URL target;
 
 	/**
 	 * Default constructor, accept a string as URL

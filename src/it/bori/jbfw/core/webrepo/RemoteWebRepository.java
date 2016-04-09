@@ -31,37 +31,37 @@ public class RemoteWebRepository implements Serializable
 	/**
 	 * serialVersionUID used for serialization
 	 */
-	private static final long	serialVersionUID	= -4931157742995109909L;
+	private static final long serialVersionUID = -4931157742995109909L;
 
 	/**
 	 * URL object composed by protocol+host+port+workspace
 	 */
-	private URL					url;
+	private URL url;
 
 	/**
 	 * Remote Machine communicating port by default it's "4502"
 	 */
-	private int					port;
+	private int port;
 
 	/**
 	 * Remote Machine Host Name by default it's "localhost"
 	 */
-	private String				host;
+	private String host;
 
 	/**
 	 * Remote Machine Workspace by default it's "crx/server/crx.default"
 	 */
-	private String				workspace;
+	private String workspace;
 
 	/**
 	 * Navigation path, by default it's "/" it's can't go more backward than "/"
 	 */
-	private String				navPath;
+	private String navPath;
 
 	/**
 	 * Condition if it's used secured connection with HTTPS or simply HTTP
 	 */
-	private boolean				ssl;
+	private boolean ssl;
 
 	/**
 	 * Default constructor, connect to a remove Java Content Repository, if

@@ -13,15 +13,15 @@ public class Vector2d implements Serializable
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= -7846703521982230525L;
+	private static final long serialVersionUID = -7846703521982230525L;
 	/**
 	 * The x Value
 	 */
-	private double				x;
+	private double x;
 	/**
 	 * The y Value
 	 */
-	private double				y;
+	private double y;
 
 	/**
 	 * Constructor of the class, need to specify 2 variable: x and y

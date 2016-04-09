@@ -13,23 +13,23 @@ public class Vector4i implements Serializable
 	/**
 	 * serialVersionUID used for serialize
 	 */
-	private static final long	serialVersionUID	= -7340510931826818063L;
+	private static final long serialVersionUID = -7340510931826818063L;
 	/**
 	 * The x Value
 	 */
-	private int					x;
+	private int x;
 	/**
 	 * The y Value
 	 */
-	private int					y;
+	private int y;
 	/**
 	 * The z Value
 	 */
-	private int					z;
+	private int z;
 	/**
 	 * The a Value
 	 */
-	private int					a;
+	private int a;
 
 	/**
 	 * Constructor of the class, need to specify 3 variable: x, y and z

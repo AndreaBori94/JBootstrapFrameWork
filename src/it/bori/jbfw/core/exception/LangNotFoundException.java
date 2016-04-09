@@ -16,7 +16,7 @@ public class LangNotFoundException extends JBFWException implements
 	/**
 	 * serialVersionUID used for serialize
 	 */
-	private static final long	serialVersionUID	= -8269787313087680143L;
+	private static final long serialVersionUID = -8269787313087680143L;
 
 	/**
 	 * Default constructor, need the lang name for specify what languages cannot

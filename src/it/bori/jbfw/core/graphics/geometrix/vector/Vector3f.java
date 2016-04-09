@@ -13,19 +13,19 @@ public class Vector3f implements Serializable
 	/**
 	 * serialVersionUID used for serialize
 	 */
-	private static final long	serialVersionUID	= -2265487703769576291L;
+	private static final long serialVersionUID = -2265487703769576291L;
 	/**
 	 * The x Value
 	 */
-	private float				x;
+	private float x;
 	/**
 	 * The y Value
 	 */
-	private float				y;
+	private float y;
 	/**
 	 * The z Value
 	 */
-	private float				z;
+	private float z;
 
 	/**
 	 * Constructor of the class, need to specify 3 variable: x, y and z

@@ -21,25 +21,25 @@ public class Lang implements Serializable
 	/**
 	 * serialVersionUID used for serialization
 	 */
-	private static final long	serialVersionUID	= -4161483547578444712L;
+	private static final long serialVersionUID = -4161483547578444712L;
 
 	/**
 	 * Languages name, can be "it" or "it-IT" for example
 	 */
-	private String				lang;
+	private String lang;
 
 	/**
 	 * languages resource where file it's stored ( do not include extension, and
 	 * extension must be "i18n" else it will throw {@link LangNotFoundException}
 	 * )
 	 */
-	private String				langSource;
+	private String langSource;
 
 	/**
 	 * {@link Properties} object containing all the key with respective
 	 * languages value
 	 */
-	private Properties			langList;
+	private Properties langList;
 
 	/**
 	 * Default constructor of the class, require the languages name and it's

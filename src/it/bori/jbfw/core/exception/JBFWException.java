@@ -15,7 +15,7 @@ public class JBFWException extends Exception implements Serializable
 	/**
 	 * serialVersionUID used for serializing
 	 */
-	private static final long	serialVersionUID	= 26832995012219205L;
+	private static final long serialVersionUID = 26832995012219205L;
 
 	/**
 	 * Default constructor, simply pass to logger instance this class

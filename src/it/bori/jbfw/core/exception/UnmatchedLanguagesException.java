@@ -15,7 +15,7 @@ public class UnmatchedLanguagesException extends JBFWException implements
 	/**
 	 * serialVersionUID used for serialization
 	 */
-	private static final long	serialVersionUID	= 4924102636862442392L;
+	private static final long serialVersionUID = 4924102636862442392L;
 
 	/**
 	 * Default constructor called when one or more languages are not "aligned"

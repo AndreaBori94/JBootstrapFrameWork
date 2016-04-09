@@ -13,15 +13,15 @@ public class Vector2i implements Serializable
 	/**
 	 * serialVersionUID used for serialize
 	 */
-	private static final long	serialVersionUID	= -3792719471593135163L;
+	private static final long serialVersionUID = -3792719471593135163L;
 	/**
 	 * The x Value
 	 */
-	private int					x;
+	private int x;
 	/**
 	 * The y Value
 	 */
-	private int					y;
+	private int y;
 
 	/**
 	 * Constructor of the class, need to specify 2 variable: x and y

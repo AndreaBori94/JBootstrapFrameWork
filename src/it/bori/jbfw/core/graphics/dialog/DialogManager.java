@@ -15,44 +15,44 @@ public class DialogManager implements Serializable
 	/**
 	 * serialVersionUID used for serialization
 	 */
-	private static final long	serialVersionUID		= 5544165808073576527L;
+	private static final long serialVersionUID = 5544165808073576527L;
 	/**
 	 * Allow user to reply OK or ABORT
 	 */
-	public static int			OPTION_OK_ABORT			= JOptionPane.CANCEL_OPTION;
+	public static int OPTION_OK_ABORT = JOptionPane.CANCEL_OPTION;
 	/**
 	 * Allow user to reply OK
 	 */
-	public static int			OPTION_OK				= JOptionPane.CLOSED_OPTION;
+	public static int OPTION_OK = JOptionPane.CLOSED_OPTION;
 	/**
 	 * Allow user to reply YES or NO
 	 */
-	public static int			OPTION_YES_NO			= JOptionPane.OK_OPTION;
+	public static int OPTION_YES_NO = JOptionPane.OK_OPTION;
 	/**
 	 * Allow user to reply YES, NO or CANCEL
 	 */
-	public static int			OPTION_YES_NO_CANCEL	= JOptionPane.YES_NO_CANCEL_OPTION;
+	public static int OPTION_YES_NO_CANCEL = JOptionPane.YES_NO_CANCEL_OPTION;
 
 	/**
 	 * Show an error icon
 	 */
-	public static int			TYPE_ERROR				= JOptionPane.ERROR_MESSAGE;
+	public static int TYPE_ERROR = JOptionPane.ERROR_MESSAGE;
 	/**
 	 * Show an information icon
 	 */
-	public static int			TYPE_INFORMATION		= JOptionPane.INFORMATION_MESSAGE;
+	public static int TYPE_INFORMATION = JOptionPane.INFORMATION_MESSAGE;
 	/**
 	 * Show a plain dialog icon
 	 */
-	public static int			TYPE_PLAIN				= JOptionPane.PLAIN_MESSAGE;
+	public static int TYPE_PLAIN = JOptionPane.PLAIN_MESSAGE;
 	/**
 	 * Show a question mark icon
 	 */
-	public static int			TYPE_QUESTION			= JOptionPane.QUESTION_MESSAGE;
+	public static int TYPE_QUESTION = JOptionPane.QUESTION_MESSAGE;
 	/**
 	 * Show a warning icon
 	 */
-	public static int			TYPE_WARNING			= JOptionPane.WARNING_MESSAGE;
+	public static int TYPE_WARNING = JOptionPane.WARNING_MESSAGE;
 
 	/**
 	 * Generic call, simply show a dialog to user with custom preference

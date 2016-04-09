@@ -21,7 +21,7 @@ public class GraphicsService implements Serializable
 	/**
 	 * serialVersionUID used for serialization
 	 */
-	private static final long	serialVersionUID	= 9027018276502308258L;
+	private static final long serialVersionUID = 9027018276502308258L;
 
 	/**
 	 * Set look and feel by a given LeF, this method auto manage logging for

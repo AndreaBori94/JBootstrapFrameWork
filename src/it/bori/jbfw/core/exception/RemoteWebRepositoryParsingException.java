@@ -16,7 +16,7 @@ public class RemoteWebRepositoryParsingException extends JBFWException
 	/**
 	 * serialVersionUID used for serialization
 	 */
-	private static final long	serialVersionUID	= -5419932759726469744L;
+	private static final long serialVersionUID = -5419932759726469744L;
 
 	/**
 	 * Default constructor, called when an error occurred while parsing and

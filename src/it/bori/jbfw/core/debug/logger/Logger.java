@@ -22,40 +22,40 @@ public class Logger implements Serializable
 	/**
 	 * serialVersionUID used for serialization
 	 */
-	private static final long		serialVersionUID	= -1483778188649924151L;
+	private static final long serialVersionUID = -1483778188649924151L;
 
 	/**
 	 * Use this, to "define" a simply info to userAdmin
 	 */
-	public static final int			LEVEL_INFO			= 0;
+	public static final int LEVEL_INFO = 0;
 	/**
 	 * Use this, to "define" a potential error, or simply a warning
 	 */
-	public static final int			LEVEL_WARNING		= 1;
+	public static final int LEVEL_WARNING = 1;
 	/**
 	 * Use this, to "define" an error
 	 */
-	public static final int			LEVEL_ERROR			= 2;
+	public static final int LEVEL_ERROR = 2;
 
 	/**
 	 * Used inside Logger to check if application has call init method or not
 	 */
-	private static boolean			initialized			= false;
+	private static boolean initialized = false;
 
 	/**
 	 * Contains how many times the specified LogLevel has been called, when
 	 * application "die", it's print all this information
 	 */
-	private static int[]			LEVEL_CALLED		= { 0, 0, 0, 0 };
+	private static int[] LEVEL_CALLED = { 0, 0, 0, 0 };
 
 	/**
 	 * Object containing the output pointer
 	 */
-	private static File				source;
+	private static File source;
 	/**
 	 * Object used to write log inside the source
 	 */
-	private static BufferedWriter	writer;
+	private static BufferedWriter writer;
 
 	/**
 	 * Initialize the Logger class, with append condition

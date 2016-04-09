@@ -15,7 +15,7 @@ public class WordNotFoundException extends JBFWException implements
 	/**
 	 * serialVersionUID for serialization
 	 */
-	private static final long	serialVersionUID	= -7507929888508336923L;
+	private static final long serialVersionUID = -7507929888508336923L;
 
 	/**
 	 * Default constructor, called when a word inside a languages it's not found

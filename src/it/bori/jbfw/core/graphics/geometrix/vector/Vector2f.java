@@ -13,15 +13,15 @@ public class Vector2f implements Serializable
 	/**
 	 * serialVersionUID used for serialize
 	 */
-	private static final long	serialVersionUID	= 6831432151348818709L;
+	private static final long serialVersionUID = 6831432151348818709L;
 	/**
 	 * The x Value
 	 */
-	private float				x;
+	private float x;
 	/**
 	 * The y Value
 	 */
-	private float				y;
+	private float y;
 
 	/**
 	 * Constructor of the class, need to specify 2 variable: x and y

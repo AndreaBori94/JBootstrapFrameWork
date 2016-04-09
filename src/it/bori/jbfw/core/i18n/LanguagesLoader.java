@@ -22,12 +22,12 @@ public class LanguagesLoader implements Serializable
 	/**
 	 * serialVersionUID used for serialization
 	 */
-	private static final long	serialVersionUID	= 7864860455197728155L;
+	private static final long serialVersionUID = 7864860455197728155L;
 
 	/**
 	 * Contains a list of languages available
 	 */
-	private static List<Lang>	langs				= new ArrayList<Lang>();
+	private static List<Lang> langs = new ArrayList<Lang>();
 
 	/**
 	 * Load a list of languages from a langFile

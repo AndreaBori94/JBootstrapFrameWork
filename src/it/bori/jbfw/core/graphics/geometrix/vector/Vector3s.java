@@ -13,19 +13,19 @@ public class Vector3s implements Serializable
 	/**
 	 * serialVersionUID used for serialize
 	 */
-	private static final long	serialVersionUID	= -4415199675754249202L;
+	private static final long serialVersionUID = -4415199675754249202L;
 	/**
 	 * The x Value
 	 */
-	private String				x;
+	private String x;
 	/**
 	 * The y Value
 	 */
-	private String				y;
+	private String y;
 	/**
 	 * The z Value
 	 */
-	private String				z;
+	private String z;
 
 	/**
 	 * Constructor of the class, need to specify 3 variable: x, y and z

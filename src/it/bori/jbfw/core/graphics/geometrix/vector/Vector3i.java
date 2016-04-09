@@ -13,19 +13,19 @@ public class Vector3i implements Serializable
 	/**
 	 * serialVersionUID used for serialize
 	 */
-	private static final long	serialVersionUID	= 2653726109321165970L;
+	private static final long serialVersionUID = 2653726109321165970L;
 	/**
 	 * The x Value
 	 */
-	private int					x;
+	private int x;
 	/**
 	 * The y Value
 	 */
-	private int					y;
+	private int y;
 	/**
 	 * The z Value
 	 */
-	private int					z;
+	private int z;
 
 	/**
 	 * Constructor of the class, need to specify 3 variable: x, y and z

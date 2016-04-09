@@ -13,23 +13,23 @@ public class Vector4f implements Serializable
 	/**
 	 * serialVersionUID used for serialize
 	 */
-	private static final long	serialVersionUID	= 1667912288184457619L;
+	private static final long serialVersionUID = 1667912288184457619L;
 	/**
 	 * The x Value
 	 */
-	private float				x;
+	private float x;
 	/**
 	 * The y Value
 	 */
-	private float				y;
+	private float y;
 	/**
 	 * The z Value
 	 */
-	private float				z;
+	private float z;
 	/**
 	 * The a Value
 	 */
-	private float				a;
+	private float a;
 
 	/**
 	 * Constructor of the class, need to specify 3 variable: x, y and z
