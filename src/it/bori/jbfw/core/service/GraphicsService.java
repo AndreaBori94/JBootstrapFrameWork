@@ -19,7 +19,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class GraphicsService {
 
 	/**
-	 * Set look and feel by a given L&F, this method auto manage logging for
+	 * Set look and feel by a given LeF, this method auto manage logging for
 	 * error with {@link Logger} class
 	 * 
 	 * @param lnfName
