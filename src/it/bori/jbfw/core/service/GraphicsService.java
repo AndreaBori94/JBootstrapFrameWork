@@ -71,4 +71,18 @@ public class GraphicsService {
 		return v;
 	}
 
+	/**
+	 * Return a {@link Vector2i} object contains Width and Height in half of the
+	 * screen. use {@link Vector2i#getX()} and {@link Vector2i#getY()} to get
+	 * respective value
+	 * 
+	 * @return {@link Vector2i} object with x as Width and Y as Height
+	 */
+	public Vector2i getHalfScreen() {
+		Vector2i v = new Vector2i(0, 0);
+		v.setX((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 2);
+		v.setY((int) Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 2);
+		return v;
+	}
+
 }
