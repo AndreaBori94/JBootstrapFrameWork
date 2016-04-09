@@ -2,7 +2,7 @@ package it.bori.jbfw.core.webrepo;
 
 import it.bori.jbfw.core.debug.logger.Logger;
 import it.bori.jbfw.core.exception.RemoteWebRepositoryAuthenticationException;
-import it.bori.jbfw.core.exception.RemoteWebRepositoryListingException;
+import it.bori.jbfw.core.exception.RemoteWebRepositoryParsingException;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -17,10 +17,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-//http://localhost:4502/crx/server/crx.default
 /**
  * Remote Web Repository Connector class that allow user to interact ( only view
- * and navigate ) inside a remote Java Content Repository
+ * and navigate ) inside a remote Java Content Repository an URL it's normally
+ * builded like "http://localhost:4502/crx/server/crx.default"
  * 
  * @author Andrea Bori
  *
@@ -88,6 +88,68 @@ public class RemoteWebRepository {
 		setPort(port);
 		setWorkspace(workspace);
 		setAuthenticator(user, pass);
+		Logger.log("Remote Web Repository it's ready and listening");
+	}
+
+	/**
+	 * Less specific constructor, connect to a remove Java Content Repository,
+	 * if username and/or password are empty or null it will throw a
+	 * {@link RemoteWebRepositoryAuthenticationException}
+	 * 
+	 * @param host
+	 *            name of machine containing Java Content Repository, by default
+	 *            it's "localhost"
+	 * @param port
+	 *            port where service it's connected, by default it's "4502"
+	 * @param workspace
+	 *            name of the workspace by default it's crx/server/crx.default
+	 * @param user
+	 *            user name used to authenticate with the remote machine
+	 * @param pass
+	 *            password used to authenticate with the remote machine
+	 * @throws RemoteWebRepositoryAuthenticationException
+	 *             called when user name and/or password are not valid
+	 */
+	public RemoteWebRepository(String host, int port, String workspace,
+			String user, String pass)
+			throws RemoteWebRepositoryAuthenticationException {
+		Logger.log("Enstablish connection to JCR");
+		Logger.log("Setting default Authenticator");
+		setSSL(false);
+		setHost(host);
+		setPort(port);
+		setWorkspace(workspace);
+		setAuthenticator(user, pass);
+		Logger.log("Remote Web Repository it's ready and listening");
+	}
+
+	/**
+	 * Basic constructor, connect to a remove Java Content Repository, if
+	 * username and/or password are empty or null it will throw a
+	 * {@link RemoteWebRepositoryAuthenticationException}
+	 * 
+	 * @param host
+	 *            name of machine containing Java Content Repository, by default
+	 *            it's "localhost"
+	 * @param workspace
+	 *            name of the workspace by default it's crx/server/crx.default
+	 * @param user
+	 *            user name used to authenticate with the remote machine
+	 * @param pass
+	 *            password used to authenticate with the remote machine
+	 * @throws RemoteWebRepositoryAuthenticationException
+	 *             called when user name and/or password are not valid
+	 */
+	public RemoteWebRepository(String host, String workspace, String user,
+			String pass) throws RemoteWebRepositoryAuthenticationException {
+		Logger.log("Enstablish connection to JCR");
+		Logger.log("Setting default Authenticator");
+		setSSL(false);
+		setHost(host);
+		setPort(4502);
+		setWorkspace(workspace);
+		setAuthenticator(user, pass);
+		Logger.log("Remote Web Repository it's ready and listening");
 	}
 
 	/**
@@ -144,8 +206,13 @@ public class RemoteWebRepository {
 	public void setHost(String host) {
 		if (host.length() > 0) {
 			this.host = host;
-		} else
+			Logger.log(Logger.LEVEL_WARNING,
+					"No host specified, setting \"localhost\" as default",
+					false);
+		} else {
 			this.host = "localhost";
+			Logger.log("Setting " + host + " as HOST");
+		}
 	}
 
 	/**
@@ -165,9 +232,15 @@ public class RemoteWebRepository {
 	 */
 	public void setWorkspace(String workspace) {
 		if (workspace.length() > 0) {
+			Logger.log("Setting workspace as " + workspace);
 			this.workspace = workspace;
-		} else
+		} else {
+			Logger.log(
+					Logger.LEVEL_WARNING,
+					"No workspace specified, setting \"crx.default\" as default",
+					false);
 			this.workspace = "crx.default";
+		}
 	}
 
 	/**
@@ -197,6 +270,7 @@ public class RemoteWebRepository {
 			}
 		} else
 			this.navPath = "/";
+		Logger.log("Switch to " + path);
 	}
 
 	/**
@@ -218,6 +292,7 @@ public class RemoteWebRepository {
 			this.url = new URL(getFullQualifiedPath());
 		} catch (Exception e) {
 			e.printStackTrace();
+			Logger.log(e);
 		}
 		return this.url;
 	}
@@ -272,11 +347,11 @@ public class RemoteWebRepository {
 	 * Get all node inside the specific path
 	 * 
 	 * @return String[] array with a list of subLink, can be empty
-	 * @throws RemoteWebRepositoryListingException
+	 * @throws RemoteWebRepositoryParsingException
 	 *             called when any error occurred while parsing and fetching
 	 *             content from a given path
 	 */
-	public String[] getList() throws RemoteWebRepositoryListingException {
+	public String[] getList() throws RemoteWebRepositoryParsingException {
 		List<String> tagValues = new ArrayList<String>();
 		boolean error = false;
 		try {
@@ -291,7 +366,7 @@ public class RemoteWebRepository {
 			error = true;
 		}
 		if (error)
-			throw new RemoteWebRepositoryListingException(
+			throw new RemoteWebRepositoryParsingException(
 					getFullQualifiedPath());
 		return tagValues.toArray(new String[0]);
 	}
@@ -317,7 +392,7 @@ public class RemoteWebRepository {
 				return false;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return false;
+			Logger.log(e);
 		}
 		return true;
 	}
@@ -351,6 +426,7 @@ public class RemoteWebRepository {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			Logger.log(e);
 			return false;
 		}
 		return true;
@@ -360,9 +436,13 @@ public class RemoteWebRepository {
 	 * Read the file content and return a string with the file content
 	 * 
 	 * @return String containing the file source
+	 * @throws RemoteWebRepositoryParsingException
+	 *             called when any error occurred while parsing and fetching
+	 *             content from a given path
 	 */
-	public String getContent() {
+	public String getContent() throws RemoteWebRepositoryParsingException {
 		String content = "";
+		boolean error = false;
 		try {
 			BufferedReader in = new BufferedReader(new InputStreamReader(
 					getUrl().openStream()));
@@ -372,9 +452,13 @@ public class RemoteWebRepository {
 			in.close();
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			error = true;
 			return null;
 		}
+
+		if (error)
+			throw new RemoteWebRepositoryParsingException(
+					getFullQualifiedPath());
 		return content;
 	}
 
@@ -394,5 +478,14 @@ public class RemoteWebRepository {
 		} else {
 			return path.lastIndexOf('.') > -1;
 		}
+	}
+
+	/**
+	 * Return the current deep level
+	 * 
+	 * @return the deep level from (0 > N)
+	 */
+	public int getDeepLevel() {
+		return getPath().split("/").length;
 	}
 }
