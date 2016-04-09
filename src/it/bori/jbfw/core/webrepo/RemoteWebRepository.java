@@ -2,12 +2,29 @@ package it.bori.jbfw.core.webrepo;
 
 import it.bori.jbfw.core.debug.logger.Logger;
 import it.bori.jbfw.core.exception.RemoteWebRepositoryAuthenticationException;
+import it.bori.jbfw.core.exception.RemoteWebRepositoryListingException;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.InputStreamReader;
 import java.net.Authenticator;
 import java.net.PasswordAuthentication;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 //http://localhost:4502/crx/server/crx.default
+/**
+ * Remote Web Repository Connector class that allow user to interact ( only view
+ * and navigate ) inside a remote Java Content Repository
+ * 
+ * @author Andrea Bori
+ *
+ */
 public class RemoteWebRepository {
 
 	/**
@@ -41,7 +58,9 @@ public class RemoteWebRepository {
 	private boolean ssl;
 
 	/**
-	 * Default constructor, connect to a remove Java Content Repository
+	 * Default constructor, connect to a remove Java Content Repository, if
+	 * username and/or password are empty or null it will throw a
+	 * {@link RemoteWebRepositoryAuthenticationException}
 	 * 
 	 * @param host
 	 *            name of machine containing Java Content Repository, by default
@@ -56,9 +75,12 @@ public class RemoteWebRepository {
 	 *            password used to authenticate with the remote machine
 	 * @param ssl
 	 *            boolean if it's used the SSL "HTTPS" to authenticate
+	 * @throws RemoteWebRepositoryAuthenticationException
+	 *             called when user name and/or password are not valid
 	 */
 	public RemoteWebRepository(String host, int port, String workspace,
-			String user, String pass, boolean ssl) {
+			String user, String pass, boolean ssl)
+			throws RemoteWebRepositoryAuthenticationException {
 		Logger.log("Enstablish connection to JCR");
 		Logger.log("Setting default Authenticator");
 		setSSL(ssl);
@@ -244,5 +266,133 @@ public class RemoteWebRepository {
 				throw new RemoteWebRepositoryAuthenticationException();
 		} else
 			throw new RemoteWebRepositoryAuthenticationException();
+	}
+
+	/**
+	 * Get all node inside the specific path
+	 * 
+	 * @return String[] array with a list of subLink, can be empty
+	 * @throws RemoteWebRepositoryListingException
+	 *             called when any error occurred while parsing and fetching
+	 *             content from a given path
+	 */
+	public String[] getList() throws RemoteWebRepositoryListingException {
+		List<String> tagValues = new ArrayList<String>();
+		boolean error = false;
+		try {
+			Pattern TAG_REGEX = Pattern.compile("<a href=\"(.+?)\"");
+			Matcher matcher = TAG_REGEX.matcher(getFullQualifiedPath());
+			while (matcher.find()) {
+				if (matcher.group(1).contains(getHost() + ":" + getPort())) {
+					tagValues.add(matcher.group(1));
+				}
+			}
+		} catch (Exception e) {
+			error = true;
+		}
+		if (error)
+			throw new RemoteWebRepositoryListingException(
+					getFullQualifiedPath());
+		return tagValues.toArray(new String[0]);
+	}
+
+	/**
+	 * Read and download a file to a local instance
+	 * 
+	 * @return boolean true if success else false
+	 */
+	public boolean fetchFile() {
+		try {
+			if (isFile(getFullQualifiedPath())) {
+				if (buildLocalPath(getPath())) {
+					String content = getContent();
+					BufferedWriter out = new BufferedWriter(new FileWriter(
+							getPath()));
+					out.write(content);
+					out.close();
+
+				} else
+					return false;
+			} else
+				return false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Build inside a local instance a folder structure based on given path
+	 * 
+	 * @param path
+	 *            path containing the folder structure
+	 * @return boolean condition if success
+	 */
+	public boolean buildLocalPath(String path) {
+		try {
+			if (path.length() > 0) {
+				String[] allPath = path.split("/");
+				String compiledPath = "";
+				for (int i = 0; i < allPath.length; i++) {
+					compiledPath += allPath[i];
+					if (isFile(compiledPath)) {
+						new File(compiledPath).createNewFile();
+					} else {
+						new File(compiledPath).mkdir();
+					}
+				}
+			} else {
+				if (isFile(path)) {
+					new File(path).createNewFile();
+				} else {
+					new File(path).mkdir();
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Read the file content and return a string with the file content
+	 * 
+	 * @return String containing the file source
+	 */
+	public String getContent() {
+		String content = "";
+		try {
+			BufferedReader in = new BufferedReader(new InputStreamReader(
+					getUrl().openStream()));
+			String inputLine;
+			while ((inputLine = in.readLine()) != null)
+				content += inputLine;
+			in.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return content;
+	}
+
+	/**
+	 * Check from a given path, if that redirect to a source file ( if has an
+	 * extension then it's a file )
+	 * 
+	 * @param path
+	 *            the path where check this condition
+	 * @return boolean true if it's a file else false
+	 */
+	public boolean isFile(String path) {
+		String[] splitted = path.split("/");
+		if (path.length() > 0) {
+			String last = splitted[splitted.length];
+			return last.lastIndexOf('.') > -1;
+		} else {
+			return path.lastIndexOf('.') > -1;
+		}
 	}
 }
