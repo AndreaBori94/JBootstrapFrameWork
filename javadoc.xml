@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project default="javadoc">
     <target name="javadoc">
-        <javadoc access="private" author="true" classpath="." destdir="doc" doctitle="JBootstrap Frame Work [JBFW]" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="it.bori.jbfw.core.graphics.dialog,it.bori.jbfw.core.net,it.bori.jbfw.core.exception,it.bori.jbfw.core.io.parser,it.bori.jbfw.core.i18n,it.bori.jbfw.core.debug.logger,it.bori.jbfw.core.graphics.geometrix.vector" source="1.8" sourcepath="src" splitindex="true" use="true" version="true"/>
+        <javadoc access="private" author="true" classpath="." destdir="doc" doctitle="JBootstrap Frame Work [JBFW]" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="it.bori.jbfw.core.net,it.bori.jbfw.core.exception,it.bori.jbfw.core.service,it.bori.jbfw.core.debug.logger,it.bori.jbfw.core.graphics.dialog,it.bori.jbfw.core.io.parser,it.bori.jbfw.core.webrepo,it.bori.jbfw.core.i18n,it.bori.jbfw.core.graphics.geometrix.vector" source="1.8" sourcepath="src" splitindex="true" use="true" version="true"/>
     </target>
 </project>

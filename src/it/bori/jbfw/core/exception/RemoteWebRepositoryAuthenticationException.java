@@ -2,6 +2,7 @@ package it.bori.jbfw.core.exception;
 
 /**
  * Called when user name or password are not valid
+ * 
  * @author Andrea Bori
  *
  */

@@ -483,7 +483,7 @@ public class RemoteWebRepository {
 	/**
 	 * Return the current deep level
 	 * 
-	 * @return the deep level from (0 > N)
+	 * @return the deep level from (0 to N)
 	 */
 	public int getDeepLevel() {
 		return getPath().split("/").length;
