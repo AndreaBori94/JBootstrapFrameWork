@@ -1,5 +1,7 @@
 package it.bori.jbfw.core.exception;
 
+import java.io.Serializable;
+
 /**
  * Exception launched when a languages file it's not found where "langsFile"
  * says
@@ -7,7 +9,7 @@ package it.bori.jbfw.core.exception;
  * @author Andrea Bori
  *
  */
-public class LangNotFoundException extends JBFWException {
+public class LangNotFoundException extends JBFWException implements Serializable {
 
 	/**
 	 * serialVersionUID used for serialize

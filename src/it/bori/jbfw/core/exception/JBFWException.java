@@ -1,5 +1,7 @@
 package it.bori.jbfw.core.exception;
 
+import java.io.Serializable;
+
 import it.bori.jbfw.core.debug.logger.Logger;
 
 /**
@@ -8,7 +10,7 @@ import it.bori.jbfw.core.debug.logger.Logger;
  * @author Andrea Bori
  *
  */
-public class JBFWException extends Exception {
+public class JBFWException extends Exception implements Serializable {
 
 	/**
 	 * serialVersionUID used for serializing

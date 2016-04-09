@@ -9,6 +9,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.Authenticator;
 import java.net.PasswordAuthentication;
 import java.net.URL;
@@ -25,10 +26,15 @@ import java.util.regex.Pattern;
  * @author Andrea Bori
  *
  */
-public class RemoteWebRepository {
+public class RemoteWebRepository implements Serializable {
 
 	/**
-	 * URL object composed by protocoll+host+port+workspace
+	 * serialVersionUID used for serialization
+	 */
+	private static final long serialVersionUID = -4931157742995109909L;
+
+	/**
+	 * URL object composed by protocol+host+port+workspace
 	 */
 	private URL url;
 

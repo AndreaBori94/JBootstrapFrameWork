@@ -3,6 +3,7 @@ package it.bori.jbfw.core.net;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -12,8 +13,12 @@ import java.net.URL;
  * @author Andrea Bori
  *
  */
-public class URLDownloader {
+public class URLDownloader implements Serializable {
 
+	/**
+	 * serialVersionUID used for serialization
+	 */
+	private static final long serialVersionUID = -4849326908155987039L;
 	/**
 	 * URL target where point the stream
 	 */

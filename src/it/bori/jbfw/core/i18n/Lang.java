@@ -6,6 +6,7 @@ import it.bori.jbfw.core.exception.WordNotFoundException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Properties;
 
 /**
@@ -15,7 +16,12 @@ import java.util.Properties;
  * @author Andrea Bori
  *
  */
-public class Lang {
+public class Lang implements Serializable {
+
+	/**
+	 * serialVersionUID used for serialization
+	 */
+	private static final long serialVersionUID = -4161483547578444712L;
 
 	/**
 	 * Languages name, can be "it" or "it-IT" for example

@@ -1,5 +1,7 @@
 package it.bori.jbfw.core.graphics.dialog;
 
+import java.io.Serializable;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -8,8 +10,12 @@ import javax.swing.JOptionPane;
  * @author Andrea Bori
  *
  */
-public class DialogManager {
+public class DialogManager implements Serializable {
 
+	/**
+	 * serialVersionUID used for serialization
+	 */
+	private static final long serialVersionUID = 5544165808073576527L;
 	/**
 	 * Allow user to reply OK or ABORT
 	 */

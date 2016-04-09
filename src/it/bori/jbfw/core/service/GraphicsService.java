@@ -1,6 +1,7 @@
 package it.bori.jbfw.core.service;
 
 import java.awt.Toolkit;
+import java.io.Serializable;
 
 import it.bori.jbfw.core.debug.logger.Logger;
 import it.bori.jbfw.core.graphics.geometrix.vector.Vector2d;
@@ -16,7 +17,12 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author Andrea Bori
  *
  */
-public class GraphicsService {
+public class GraphicsService implements Serializable {
+
+	/**
+	 * serialVersionUID used for serialization
+	 */
+	private static final long serialVersionUID = 9027018276502308258L;
 
 	/**
 	 * Set look and feel by a given LeF, this method auto manage logging for

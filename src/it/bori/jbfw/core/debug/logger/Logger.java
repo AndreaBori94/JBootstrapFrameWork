@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,7 +17,12 @@ import javax.swing.JOptionPane;
  * @author Andrea Bori
  *
  */
-public class Logger {
+public class Logger implements Serializable {
+	/**
+	 * serialVersionUID used for serialization
+	 */
+	private static final long serialVersionUID = -1483778188649924151L;
+	
 	/**
 	 * Use this, to "define" a simply info to userAdmin
 	 */

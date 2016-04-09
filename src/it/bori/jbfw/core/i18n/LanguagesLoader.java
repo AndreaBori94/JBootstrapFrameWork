@@ -7,6 +7,7 @@ import it.bori.jbfw.core.exception.WordNotFoundException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +17,13 @@ import java.util.List;
  * @author Andrea Bori
  *
  */
-public class LanguagesLoader {
+public class LanguagesLoader implements Serializable {
 
+	/**
+	 * serialVersionUID used for serialization
+	 */
+	private static final long serialVersionUID = 7864860455197728155L;
+	
 	/**
 	 * Contains a list of languages available
 	 */

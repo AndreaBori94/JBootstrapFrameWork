@@ -1,12 +1,14 @@
 package it.bori.jbfw.core.exception;
 
+import java.io.Serializable;
+
 /**
  * Exception when a word it's not found when requested
  * 
  * @author Andrea Bori
  *
  */
-public class WordNotFoundException extends JBFWException {
+public class WordNotFoundException extends JBFWException implements Serializable {
 
 	/**
 	 * serialVersionUID for serialization

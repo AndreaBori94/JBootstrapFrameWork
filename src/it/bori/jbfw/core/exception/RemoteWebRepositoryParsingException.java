@@ -1,5 +1,7 @@
 package it.bori.jbfw.core.exception;
 
+import java.io.Serializable;
+
 /**
  * Called when an error occurred while parsing and fetching the content from a
  * given path
@@ -7,7 +9,7 @@ package it.bori.jbfw.core.exception;
  * @author Andrea Bori
  *
  */
-public class RemoteWebRepositoryParsingException extends JBFWException {
+public class RemoteWebRepositoryParsingException extends JBFWException implements Serializable {
 
 	/**
 	 * serialVersionUID used for serialization
