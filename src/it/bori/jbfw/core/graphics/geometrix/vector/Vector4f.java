@@ -3,7 +3,7 @@ package it.bori.jbfw.core.graphics.geometrix.vector;
 import java.io.Serializable;
 
 /**
- * Basic Vector3 of any kind of primitive type, data or object
+ * Basic Vector4 of any kind of primitive type, data or object
  * 
  * @author Andrea Bori
  */
