@@ -1,6 +1,9 @@
 package it.bori.jbfw.core.service;
 
+import java.awt.Toolkit;
+
 import it.bori.jbfw.core.debug.logger.Logger;
+import it.bori.jbfw.core.graphics.geometrix.vector.Vector2i;
 
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
@@ -52,6 +55,20 @@ public class GraphicsService {
 			Logger.log(Logger.LEVEL_INFO,
 					"Success apply L&F [" + lnfName + "]", false);
 		}
+	}
+
+	/**
+	 * Return a {@link Vector2i} object contains Width and Height of screen use
+	 * {@link Vector2i#getX()} and {@link Vector2i#getY()} to get respective
+	 * value
+	 * 
+	 * @return {@link Vector2i} object with x as Width and Y as Height
+	 */
+	public Vector2i getScreen() {
+		Vector2i v = new Vector2i(0, 0);
+		v.setX((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth());
+		v.setY((int) Toolkit.getDefaultToolkit().getScreenSize().getHeight());
+		return v;
 	}
 
 }
