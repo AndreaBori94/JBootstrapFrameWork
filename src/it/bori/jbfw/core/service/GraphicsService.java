@@ -3,6 +3,7 @@ package it.bori.jbfw.core.service;
 import java.awt.Toolkit;
 
 import it.bori.jbfw.core.debug.logger.Logger;
+import it.bori.jbfw.core.graphics.geometrix.vector.Vector2d;
 import it.bori.jbfw.core.graphics.geometrix.vector.Vector2i;
 
 import javax.swing.UIManager;
@@ -83,6 +84,26 @@ public class GraphicsService {
 		v.setX((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 2);
 		v.setY((int) Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 2);
 		return v;
+	}
+
+	/**
+	 * Return a {@link Vector2d} object contains center coordinate for an object
+	 * inside a given space
+	 * 
+	 * @param sizeX
+	 *            the X size of the container
+	 * @param sizeY
+	 *            the Y size of the container
+	 * @param width
+	 *            the width of the object
+	 * @param height
+	 *            the height of the object
+	 * @return a Vector2d width right coordinate
+	 */
+	public Vector2d calcMiddlePosition(int sizeX, int sizeY, int width,
+			int height) {
+		return new Vector2d((sizeX / 2) - (width / 2), (sizeY / 2)
+				- (height / 2));
 	}
 
 }
