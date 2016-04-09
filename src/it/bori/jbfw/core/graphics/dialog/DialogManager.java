@@ -82,6 +82,7 @@ public class DialogManager {
 	public static int warning(String title, String message, int action) {
 		return JOptionPane.showConfirmDialog(null, message, title, action,
 				TYPE_WARNING);
+		
 	}
 
 	/**
