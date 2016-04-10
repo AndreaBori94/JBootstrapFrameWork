@@ -546,6 +546,31 @@ public class RemoteWebRepository implements Serializable
 	}
 
 	/**
+	 * Get the file extension, useful to determinate if it's javascript or java
+	 * or else. This make use of method
+	 * {@link RemoteWebRepository#isFile(String)}
+	 * 
+	 * @param path
+	 *            the path of the file to check
+	 * @return a string with the extension, if it's not a file just return null
+	 */
+	public String getFileExtension(String path) {
+		if (isFile(path))
+		{
+			String extension = "";
+
+			int i = path.lastIndexOf('.');
+			if (i > 0)
+			{
+				extension = path.substring(i + 1);
+			}
+			return extension;
+		}
+		else
+			return null;
+	}
+
+	/**
 	 * Return the current deep level
 	 * 
 	 * @return the deep level from (0 to N)
