@@ -57,6 +57,11 @@ public class Logger implements Serializable
 	 */
 	private static BufferedWriter writer;
 
+	static
+	{
+		Logger.init(true);
+	}
+
 	/**
 	 * Initialize the Logger class, with append condition
 	 * 
@@ -212,12 +217,21 @@ public class Logger implements Serializable
 	}
 
 	/**
-	 * Simply out printing exception, getting message and title from exception
+	 * Simply out printing exception, getting message and title from exception,
+	 * if exception object it's not defined ( null ) it's will write a log with
+	 * LEVEL ERROR and a message defining that an exception was thrown but no
+	 * exception was caught
 	 * 
 	 * @param e
 	 *            exception to caught
 	 */
 	public static void log(Exception e) {
-		Logger.log(Logger.LEVEL_ERROR, e.getMessage(), false);
+		if (e != null)
+		{
+			Logger.log(Logger.LEVEL_ERROR, e.getMessage(), false);
+		}
+		else
+			Logger.log(Logger.LEVEL_ERROR,
+					"throw exception, but exception was null", false);
 	}
 }

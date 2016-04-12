@@ -1,0 +1,83 @@
+2016/04/10 15:49:10 *INF* INF: 0
+2016/04/10 15:49:10 *INF* WAR: 0
+2016/04/10 15:49:10 *INF* ERR: 0
+2016/04/10 15:49:10 *INF* UND: 0
+2016/04/10 15:49:10 *INF* Application Terminating
+2016/04/10 15:50:13 *INF* Application Starting
+2016/04/10 15:50:13 *INF* Registered: LOG STREAM
+2016/04/10 15:50:13 *INF* Registered: 0 Files
+2016/04/10 15:50:13 *INF* Registered: Shutdown Hook
+2016/04/10 15:50:13 *INF* Application ready to start setup
+2016/04/10 15:50:15 *INF* INF: 5
+2016/04/10 15:50:15 *INF* INF: 5
+2016/04/10 15:50:15 *INF* WAR: 0
+2016/04/10 15:50:15 *INF* WAR: 0
+2016/04/10 15:50:15 *INF* ERR: 0
+2016/04/10 15:50:15 *INF* ERR: 0
+2016/04/10 15:50:15 *INF* UND: 0
+2016/04/10 15:50:15 *INF* UND: 0
+2016/04/10 15:50:15 *INF* Application Terminating
+2016/04/10 15:50:15 *INF* Application Terminating
+2016/04/10 19:30:18 *INF* Application Starting
+2016/04/10 19:30:18 *INF* Registered: LOG STREAM
+2016/04/10 19:30:18 *INF* Registered: 0 Files
+2016/04/10 19:30:18 *INF* Registered: Shutdown Hook
+2016/04/10 19:30:18 *INF* Application ready to start setup
+2016/04/10 19:30:54 *INF* INF: 5
+2016/04/10 19:30:54 *INF* WAR: 0
+2016/04/10 19:30:54 *INF* ERR: 0
+2016/04/10 19:30:54 *INF* UND: 0
+2016/04/10 19:30:54 *INF* Application Terminating
+2016/04/10 19:30:54 *INF* INF: 10
+2016/04/10 19:30:54 *INF* WAR: 0
+2016/04/10 19:30:54 *INF* ERR: 0
+2016/04/10 19:30:54 *INF* UND: 0
+2016/04/10 19:30:54 *INF* Application Terminating
+2016/04/11 18:37:41 *INF* Application Starting
+2016/04/11 18:37:41 *INF* Registered: LOG STREAM
+2016/04/11 18:37:41 *INF* Registered: 0 Files
+2016/04/11 18:37:41 *INF* Registered: Shutdown Hook
+2016/04/11 18:37:41 *INF* Application ready to start setup
+2016/04/11 18:37:41 *INF* test
+2016/04/11 18:37:41 *INF* INF: 6
+2016/04/11 18:37:41 *INF* INF: 6
+2016/04/11 18:37:41 *INF* WAR: 0
+2016/04/11 18:37:41 *INF* WAR: 0
+2016/04/11 18:37:41 *INF* ERR: 0
+2016/04/11 18:37:41 *INF* ERR: 0
+2016/04/11 18:37:41 *INF* UND: 0
+2016/04/11 18:37:41 *INF* Application Terminating
+2016/04/11 18:37:41 *INF* UND: 0
+2016/04/11 18:37:41 *INF* Application Terminating
+2016/04/11 18:37:58 *INF* Application Starting
+2016/04/11 18:37:58 *INF* Registered: LOG STREAM
+2016/04/11 18:37:58 *INF* Registered: 0 Files
+2016/04/11 18:37:58 *INF* Registered: Shutdown Hook
+2016/04/11 18:37:58 *INF* Application ready to start setup
+2016/04/11 18:37:58 *ERR* exc test
+2016/04/11 18:37:58 *INF* INF: 5
+2016/04/11 18:37:58 *INF* INF: 5
+2016/04/11 18:37:58 *INF* WAR: 0
+2016/04/11 18:37:58 *INF* WAR: 0
+2016/04/11 18:37:58 *INF* ERR: 1
+2016/04/11 18:37:58 *INF* ERR: 1
+2016/04/11 18:37:58 *INF* UND: 0
+2016/04/11 18:37:58 *INF* UND: 0
+2016/04/11 18:37:58 *INF* Application Terminating
+2016/04/11 18:37:58 *INF* Application Terminating
+2016/04/11 18:38:07 *INF* Application Starting
+2016/04/11 18:38:07 *INF* Registered: LOG STREAM
+2016/04/11 18:38:07 *INF* Registered: 0 Files
+2016/04/11 18:38:07 *INF* Registered: Shutdown Hook
+2016/04/11 18:38:07 *INF* Application ready to start setup
+2016/04/11 18:38:07 *ERR* exc test
+2016/04/11 18:38:07 *INF* INF: 5
+2016/04/11 18:38:07 *INF* INF: 5
+2016/04/11 18:38:07 *INF* WAR: 0
+2016/04/11 18:38:07 *INF* WAR: 0
+2016/04/11 18:38:07 *INF* ERR: 1
+2016/04/11 18:38:07 *INF* ERR: 1
+2016/04/11 18:38:07 *INF* UND: 0
+2016/04/11 18:38:07 *INF* UND: 0
+2016/04/11 18:38:07 *INF* Application Terminating
+2016/04/11 18:38:07 *INF* Application Terminating

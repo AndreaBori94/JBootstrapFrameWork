@@ -578,4 +578,37 @@ public class RemoteWebRepository implements Serializable
 	public int getDeepLevel() {
 		return getPath().split("/").length;
 	}
+
+	/**
+	 * Build a list ( tree ) of file founded from the given root ( recursive
+	 * function )
+	 * 
+	 * @param root
+	 *            the root where start indexing
+	 * @return List<String> object with a list of string containing the root
+	 * @throws RemoteWebRepositoryParsingException
+	 *             thrown in case of parsing exception
+	 * @deprecated NOT YET IMPLEMENTED
+	 */
+	public List<String> getTree(String root)
+			throws RemoteWebRepositoryParsingException {
+		List<String> total = new ArrayList<String>();
+		if (!"".equals(root))
+		{
+			String[] content = getList();
+			for (int i = 0; i < content.length; i++)
+			{
+				if (!isFile(content[i]))
+				{
+					List<String> subtotal = getTree(content[i]);
+				}
+				else
+					total.add(content[i]);
+			}
+			return total;
+		}
+		else
+			return null;
+	}
+
 }
